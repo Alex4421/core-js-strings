@@ -52,7 +52,7 @@ function isString(value) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings( value1, value2 ) {
+function concatenateStrings(value1, value2) {
   return value1 + value2;
 }
 /**
@@ -66,7 +66,7 @@ function concatenateStrings( value1, value2 ) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar( value) {
+function getFirstChar(value) {
   return value.slice(0,1);
 }
 /**
@@ -80,7 +80,7 @@ function getFirstChar( value) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces( value ) {
+function removeLeadingAndTrailingWhitespaces(value) {
   return value.trim();
 }
 /**
@@ -176,7 +176,7 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(str ) {
+function sumOfCodes(str) {
   return Array.from(str).reduce((sum, char) => sum + char.charCodeAt(0), 0);
 }
 
@@ -253,7 +253,7 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically( str ) {
+function orderAlphabetically(str) {
   return str.split('').sort().join('');
 }
 
@@ -269,7 +269,7 @@ function orderAlphabetically( str ) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring( str, substring ) {
+function containsSubstring(str, substring) {
   return str.includes(substring);;
 }
 
@@ -351,7 +351,7 @@ function countVowels(str) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(str ) {
+function reverseWords(str) {
     const words = str.split(' ');
     const reversedWords = words.map(word => word.split('').reverse().join(''));
     return reversedWords.join(' ');
@@ -409,7 +409,7 @@ function getStringFromTemplate( firstName, lastName ) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate( value ) {
+function extractNameFromTemplate(value) {
   return value.split(', ')[1].slice(0, -1);
 }
 
@@ -425,13 +425,11 @@ function extractNameFromTemplate( value ) {
  *   unbracketTag('<a>') => 'a'
  */
 function unbracketTag(str) {
-    if (str.startsWith('<') && str.endsWith('>')) {
-        return str.slice(1, -1);
-    }
-    return str;
+if (str.startsWith('<') && str.endsWith('>')) {
+return str.slice(1, -1);
 }
-
-
+return str;
+}
 /**
  * Extracts e-mails from single string with e-mails list delimited by semicolons
  *
@@ -448,11 +446,8 @@ function unbracketTag(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-
-  return str.split(';');
-
+return str.split(';');
 }
-
 /**
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13

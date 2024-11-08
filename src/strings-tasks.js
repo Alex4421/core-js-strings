@@ -37,13 +37,9 @@ function getStringLength(value) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString( value ) {
-  if(typeof value === 'string'){
-    return true
-  } else
-  return false;
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
-
 /**
  * Returns the result of concatenation of two strings.
  *
@@ -59,7 +55,6 @@ function isString( value ) {
 function concatenateStrings( value1, value2 ) {
   return value1 + value2;
 }
-
 /**
  * Returns the first character of the given string.
  *
@@ -74,7 +69,6 @@ function concatenateStrings( value1, value2 ) {
 function getFirstChar( value) {
   return value.slice(0,1);
 }
-
 /**
  * Removes leading and trailing whitespace characters from the string.
  *
@@ -89,7 +83,6 @@ function getFirstChar( value) {
 function removeLeadingAndTrailingWhitespaces( value ) {
   return value.trim();
 }
-
 /**
  * Removes only leading whitespace characters from the string.
  *
@@ -102,9 +95,8 @@ function removeLeadingAndTrailingWhitespaces( value ) {
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
 function removeLeadingWhitespaces(value) {
-  return value.trimStart()
+  return value.trimStart();
 }
-
 /**
  * Removes only trailing whitespace characters from the string.
  *
@@ -133,7 +125,7 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString( str, times ) {
+function repeatString(str,times) {
   return str.repeat(times);
 }
 
@@ -186,7 +178,7 @@ function removeLastOccurrences(str, value) {
  */
 function sumOfCodes(str ) {
   return Array.from(str).reduce((sum, char) => sum + char.charCodeAt(0), 0);
-};
+}
 
 /**
  * Checks if a string starts with a specific substring.
@@ -231,12 +223,11 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime( minutes, seconds ) {
+function formatTime(minutes,seconds) {
   const min = minutes.toString().padStart(2, '0');
   const sec = seconds.toString().padStart(2, '0');
   return `${min}:${sec}`;
 }
-
 /**
  * Returns a string in reverse order.
  *
@@ -248,7 +239,7 @@ function formatTime( minutes, seconds ) {
  *   reverseString('12345') => '54321'
  */
 function reverseString(str) {
- return str.split('').reverse().join('');;
+ return str.split('').reverse().join('');
 }
 
 /**

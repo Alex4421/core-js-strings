@@ -362,15 +362,14 @@ function reverseWords(str) {
  */
 function invertCase(str) {
   return str
-      .split('')
-      .map(char => {
-          if (char === char.toLowerCase()) {
-              return char.toUpperCase();
-          } else {
-              return char.toLowerCase();
-          }
-      })
-      .join('');
+    .split('')
+    .map((char) => {
+      const lowercasedChar = char.toLowerCase();
+      const uppercasedChar = char.toUpperCase();
+
+      return char === lowercasedChar ? uppercasedChar : lowercasedChar;
+    })
+    .join('');
 }
 
 /**
@@ -386,7 +385,7 @@ function invertCase(str) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate( firstName, lastName ) {
+function getStringFromTemplate(firstName, lastName) {
   return `Hello!, ${firstName} ${lastName}!`;
 }
 
@@ -416,10 +415,10 @@ function extractNameFromTemplate(value) {
  *   unbracketTag('<a>') => 'a'
  */
 function unbracketTag(str) {
-if (str.startsWith('<') && str.endsWith('>')) {
-return str.slice(1, -1);
-}
-return str;
+  if (str.startsWith('<') && str.endsWith('>')) {
+    return str.slice(1, -1);
+ }
+  return str;
 }
 /**
  * Extracts e-mails from single string with e-mails list delimited by semicolons
@@ -437,7 +436,7 @@ return str;
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-return str.split(';');
+  return str.split(';');
 }
 /**
  * Encode specified string with ROT13 cipher

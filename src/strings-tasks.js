@@ -456,8 +456,10 @@ function unbracketTag(str) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails( str ) {
+function extractEmails(str) {
+
   return str.split(';');
+
 }
 
 /**
@@ -477,14 +479,26 @@ function extractEmails( str ) {
  *
  */
 function encodeToRot13(str) {
-  return str.split('').map(char => {
-      if (char >= 'a' && char <= 'z') {
-          return String.fromCharCode(((char.charCodeAt(0) - 97 + 13) % 26) + 97);
-      } else if (char >= 'A' && char <= 'Z') {
-          return String.fromCharCode(((char.charCodeAt(0) - 65 + 13) % 26) + 65);
+  const alphabet = new Array(26)
+    .fill(null)
+    .map((_, index) => String.fromCharCode(index + 97));
+
+  return str
+    .split('')
+    .map((char) => {
+      const lowercasedChar = char.toLowerCase();
+
+      if (alphabet.includes(lowercasedChar)) {
+        const isUpperCased = char !== lowercasedChar;
+        const rot13Char =
+          alphabet[(alphabet.indexOf(lowercasedChar) + 13) % 26];
+
+        return isUpperCased ? rot13Char.toUpperCase() : rot13Char;
       }
+
       return char;
-  }).join('');
+    })
+    .join('');
 }
 
 /**
@@ -512,10 +526,26 @@ function encodeToRot13(str) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  const ranks = ['A','2','3','4','5','6','7','8','9','10','J','Q','K',];
+  const ranks = [
+    'A',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    'J',
+    'Q',
+    'K',
+  ];
   const suits = ['♣', '♦', '♥', '♠'];
+
   const rank = value.slice(0, value.length - 1);
   const suit = value.slice(-1);
+
   return ranks.indexOf(rank) + suits.indexOf(suit) * 13;
 }
 

@@ -343,12 +343,11 @@ function findLongestWord(sentence) {
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
 function reverseWords(str) {
-    const words = str.split(' ');
-    const reversedWords = words.map(word => word.split('').reverse().join(''));
-    return reversedWords.join(' ');
+  return str
+    .split(' ')
+    .map((word) => word.split('').reverse().join(''))
+    .join(' ');
 }
-
-
 /**
  * Inverts the case of each character in the given string.
  *
@@ -417,7 +416,7 @@ function extractNameFromTemplate(value) {
 function unbracketTag(str) {
   if (str.startsWith('<') && str.endsWith('>')) {
     return str.slice(1, -1);
- }
+  }
   return str;
 }
 /**

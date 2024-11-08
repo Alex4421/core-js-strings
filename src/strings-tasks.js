@@ -67,7 +67,7 @@ function concatenateStrings(value1, value2) {
  *   getFirstChar('') => ''
  */
 function getFirstChar(value) {
-  return value.slice(0,1);
+  return value.slice(0, 1);
 }
 /**
  * Removes leading and trailing whitespace characters from the string.
@@ -125,7 +125,7 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(str,times) {
+function repeatString(str, times) {
   return str.repeat(times);
 }
 
@@ -160,7 +160,7 @@ function removeFirstOccurrences(str, value) {
 function removeLastOccurrences(str, value) {
   const lastIndex = str.lastIndexOf(value);
   if (lastIndex === -1) {
-      return str;
+      return str
   }
   return str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
 }
@@ -223,7 +223,7 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(minutes,seconds) {
+function formatTime(minutes, seconds) {
   const min = minutes.toString().padStart(2, '0');
   const sec = seconds.toString().padStart(2, '0');
   return `${min}:${sec}`;
@@ -270,7 +270,7 @@ function orderAlphabetically(str) {
  *   containsSubstring('12345', '34') => true
  */
 function containsSubstring(str, substring) {
-  return str.includes(substring);;
+  return str.includes(substring);
 }
 
 /**
@@ -288,14 +288,11 @@ function containsSubstring(str, substring) {
  *   countVowels('XYZ') => 1
  */
 function countVowels(str) {
-  const vowels = 'aeiouAEIOU';
-  let count = 0;
-  for (let char of str) {
-      if (vowels.includes(char)) {
-          count++;
-      }
-  }
-  return count;
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+
+  return str
+    .split('')
+    .reduce((acc, curr) => (vowels.includes(curr) ? acc + 1 : acc), 0);
 }
 
 /**
@@ -312,10 +309,9 @@ function countVowels(str) {
  *   isPalindrome('No lemon, no melon') => true
  */
   function isPalindrome(str) {
-    const cleanedStr = str.replace(/[^a-z0-9]/gi, '').toLowerCase();
-    return cleanedStr === cleanedStr.split('').reverse().join('');
+  const cleanedStr = str.replace(/[^a-z0-9]/gi, '').toLowerCase();
+  return cleanedStr === cleanedStr.split('').reverse().join('');
 }
-
 
 /**
  * Find the longest word in the sentence. If there are multiple longest words,
@@ -329,15 +325,10 @@ function countVowels(str) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-  function findLongestWord(sentence) {
-    const words = sentence.split(' ');
-    let longestWord = '';
-      for (const word of words) {
-       if (word.length > longestWord.length) {
-        longestWord = word;
-    }
-    }
-    return longestWord;
+function findLongestWord(sentence) {
+  return sentence
+    .split(' ')
+    .reduce((acc, curr) => (curr.length > acc.length ? curr : acc), '');
 }
 
 
